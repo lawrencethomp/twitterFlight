@@ -1,3 +1,6 @@
+import Controller
+import TextState
+
 '''
 def initialize():
 
