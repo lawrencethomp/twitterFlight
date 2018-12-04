@@ -15,6 +15,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import SGDClassifier
 from stats import groupairline
+import pickle
 
 app = Flask(__name__)
 
@@ -61,11 +62,21 @@ def train_classify():
                            verbose=1)
 	gs_lr_tfidf.fit(X_train, y_train)
 	clf = gs_lr_tfidf.best_estimator_
-	return clf
+	mypickle_path = 'flightPickle.pkl'
+	flightpickle = open(mypickle_path, 'wb')
+	pickle.dump(clf, flightpickle)
+	flightpickle.close()
+
+train = train_classify()
+
+def unpickle():
+	mypickle_path = 'flightPickle.pkl'
+	model_unpickle = open(mypickle_path, 'rb')
+	clf_new = pickle.load(model_unpickle)
+	return clf_new
 
 class flightForm(Form):
-   submit = SubmitField("Send")
-
+	submit = SubmitField("Send")
 @app.route("/")
 def hello():
 	form = flightForm(request.form)
@@ -78,13 +89,31 @@ def result():
         review = request.form['sentimentTextarea']
         airline = request.form['airline']
         myname = request.form['nameText']
-        review_this = train_classify()
-        show = review_this.predict([review])
-        airlinedata = groupairline(airline)
+        review_this = unpickle()
+        category = review_this.predict([review])
+        currentairlinedata = groupairline(airline)
+        americandata =  airlinedata = groupairline('American')
+        deltadata =  airlinedata = groupairline('Delta')
+        southwestdata =  airlinedata = groupairline('Southwest')
+        uniteddata =  airlinedata = groupairline('United')
+        usdata =  airlinedata = groupairline('US')
+        vadata =  airlinedata = groupairline('Virgin America')
         return render_template('analysis.html',
-                                content=show[0], myname=myname, airline=airline,
-                                positive = airlinedata[0],
-                                negative = airlinedata[1],neutral = airlinedata[2])
+                                category=category[0], myname=myname, airline=airline,
+                                currentpositive=currentairlinedata[0],
+                                currentnegative=currentairlinedata[1],currentneutral=currentairlinedata[2],
+                                americanpositive=americandata[0],
+                                americannegative=americandata[1],americanneutral=americandata[2],
+                                deltapositive=deltadata[0],
+                                deltanegative=deltadata[1],deltaneutral=deltadata[2],
+                                southwestpositive=southwestdata[0],
+                                southwestnegative=southwestdata[1],southwestneutral=southwestdata[2],
+                                unitedpositive=uniteddata[0],
+                                unitednegative=uniteddata[1],unitedneutral=uniteddata[2],
+                                uspositive=usdata[0],
+                                usnegative=usdata[1],usneutral=usdata[2],
+                               	vapositive=vadata[0],
+                                vanegative=vadata[1],vaneutral=vadata[2])
     return render_template('reviewform.html', form=form)
     
 if __name__ == "__main__":

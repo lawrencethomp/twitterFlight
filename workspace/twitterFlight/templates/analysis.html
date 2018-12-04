@@ -14,8 +14,6 @@
 			    var instances = M.Collapsible.init(elems, options);
 			  });
 
-			  // Or with jQuery
-
 			  $(document).ready(function(){
 			    $('.collapsible').collapsible();
 			  });
@@ -33,7 +31,15 @@
 			<div class="card" style="border-radius: 40px 40px 40px 40px;border: 1px solid black">
 				<div class="card-content container brown-text">
 		    		<h5 class="card-title blue-text">Hello {{myname}} Your Flight review for {{airline}} Airlines was</h5>
-		    		<h6>{{content }}</h6>
+		    		{% if category == 'negative'%}
+		    			<div class="card-panel red darken-4 white-text">{{category}}</div>
+		    		{% endif %}
+		    		{% if category == 'positive'%}
+		    			<div class="card-panel  teal darken-4 white-text">{{category}}</div>
+		    		{% endif %}
+		    		{% if category == 'neutral'%}
+		    			<div class="card-panel amber darken-4 white-text small">{{category}}</div>
+		    		{% endif %}
 		    		 <ul class="collapsible">
 					    <li>
 					      <div class="collapsible-header"><i class="material-icons">airplanemode_active</i>See what others think about 
@@ -43,34 +49,54 @@
 						  		<div class="col s4 m4">
 							    <div class="card"  style="border-radius: 90px;border: 2px solid green">
 							        <div class="card-content center">
-							          <div style="font-size: 30pt;font-weight: bold;">
-							          	{{positive}}
+							          <div style="font-size: 35pt;font-weight: bold;">
+							          	{{currentpositive}}
 							          </div>
-							          	positive reviews
+							          	positive sentiments
 							        </div>
 							      </div>
 							    </div>
 							    <div class="col s4 m4">
 							    <div class="card"  style="border-radius: 90px;border: 2px solid red">
 							        <div class="card-content center">
-							          <div style="font-size: 30pt;font-weight: bold;">
-							          	{{negative}}
+							          <div style="font-size: 35pt;font-weight: bold;">
+							          	{{currentnegative}}
 							          </div>
-							          	Negative reviews
+							          	negative sentiments
 							        </div>
 							    </div>
 								</div>
 								<div class="col s4 m4">
 							    <div class="card"  style="border-radius: 90px;border: 2px solid orange">
 							        <div class="card-content center">
-							          <div style="font-size: 30pt;font-weight: bold;">
-							          	{{neutral}}
+							          <div style="font-size: 35pt;font-weight: bold;">
+							          	{{currentneutral}}
 							          </div>
-							          	Neutral reviews
+							          	neutral sentiments
 							        </div>
 							    </div>
 								</div>
 								</div>
+								
+								<div>
+									<form>
+							      		<p>Compare with: <span>
+							      		
+								      		<select class="input-field col s12 browser-default" id="compareairline" 
+								      		name="compareairline" id="compareairline" required="true">
+											    <option value="American">American</option>
+											    <option value="Delta">Delta</option>
+											    <option value="Southwest">Southwest</option>
+											    <option value="United">United</option>
+											    <option value="US">US</option>
+											    <option value="Virgin America">Virgin America</option>
+											</select>
+											<a class="waves-effect waves-light btn modal-trigger black white-text" 
+											onclick="getairline()" href="#modal1">Compare</a>
+											
+								      	</span></p>
+							      	</form>
+							      </div>
 					      </span></div>
 					    </li>
 					  </ul>
@@ -78,7 +104,69 @@
 		  		
 			</div>
 		</div>
+		
+		<div id="modal1" class="modal bottom-sheet">
+			<div class="modal-content">
+		      <h4>{{airline}} Airline vs <span id="newairline"></span> Airline</h4>
+		     <div class="row">
+		  		 <table class="centered" small>
+			        <thead>
+			          <tr>
+			              <th>Airline</th>
+			              <th>Positive Sentiments</th>
+			              <th>Negative Sentiments</th>
+			              <th>Neutral Sentiments</th>
+			          </tr>
+			        </thead>
 
+			        <tbody>
+			          <tr>
+			            <td>{{airline}}</td>
+			            <td>{{currentpositive}}</td>
+			            <td>{{currentnegative}}</td>
+			            <td>{{currentneutral}}</td>
+			          </tr>
+			          <tr id="americantr" style="display: none">
+			            <td>American</td>
+			            <td>{{americanpositive}}</td>
+			            <td>{{americannegative}}</td>
+			            <td>{{americanneutral}}</td>
+			          </tr>
+			          <tr id="deltatr" style="display: none">
+			            <td>Delta</td>
+			            <td>{{deltapositive}}</td>
+			            <td>{{deltanegative}}</td>
+			            <td>{{deltaneutral}}</td>
+			          </tr>
+			          <tr id="swtr" style="display: none">
+			            <td>SouthWest</td>
+			            <td>{{southwestpositive}}</td>
+			            <td>{{southwestnegative}}</td>
+			            <td>{{southwestneutral}}</td>
+			          </tr>
+			          <tr id="unitedtr" style="display: none">
+			            <td>United</td>
+			            <td>{{unitedpositive}}</td>
+			            <td>{{unitednegative}}</td>
+			            <td>{{unitedneutral}}</td>
+			          </tr>
+			          <tr id="ustr" style="display: none">
+			            <td>US</td>
+			            <td>{{uspositive}}</td>
+			            <td>{{usnegative}}</td>
+			            <td>{{usneutral}}</td>
+			          </tr>
+			          <tr id="vatr" style="display: none">
+			            <td>Virgin Airways</td>
+			            <td>{{vapositive}}</td>
+			            <td>{{vanegative}}</td>
+			            <td>{{vaneutral}}</td>
+			          </tr>
+			        </tbody>
+			      </table>
+				</div>
+		    </div>
+		</div>
 
 		<div id='button'>
 			  <form action="/">
@@ -87,10 +175,71 @@
 		</div>
 	
 	<script type="text/javascript">
-		document.addEventListener('DOMContentLoaded', function() {
-	    	var elems = document.querySelectorAll('.modal1');
-	    	var instances = M.Modal.init(elems, options);
-	  	});
+		$(document).ready(function(){
+		    $('.modal').modal();
+		});
 	</script>
+	
+	<script type="text/javascript">  
+		function getairline(){  
+			var compareairline=document.getElementById("compareairline").value;  
+	        document.getElementById("newairline").innerHTML=compareairline;
+	      	var a = document.getElementById("americantr");
+	      	var d = document.getElementById("deltatr");
+	      	var s = document.getElementById("swtr");
+	      	var u = document.getElementById("unitedtr");
+	      	var t = document.getElementById("ustr");
+	      	var v = document.getElementById("vatr");
+			if (compareairline == "American"){
+	        	a.style.display = "table-row";
+	        	d.style.display = "none";
+	        	s.style.display = "none";
+	        	u.style.display = "none";
+	        	t.style.display = "none";
+	        	v.style.display = "none";
+	        	
+	        }
+	        else if (compareairline == "Delta"){	        	
+	        	d.style.display = "table-row";
+	        	a.style.display = "none";
+	        	s.style.display = "none";
+	        	u.style.display = "none";
+	        	t.style.display = "none";
+	        	v.style.display = "none";
+	        }
+	        else if (compareairline == "Southwest"){       	
+	        	s.style.display = "table-row";
+	        	a.style.display = "none";
+	        	d.style.display = "none";
+	        	u.style.display = "none";
+	        	t.style.display = "none";
+	        	v.style.display = "none";
+	        }
+	        else if (compareairline == "United"){
+	        	u.style.display = "table-row";
+	        	a.style.display = "none";
+	        	d.style.display = "none";
+	        	s.style.display = "none";
+	        	t.style.display = "none";
+	        	v.style.display = "none";
+	        }
+	        else if (compareairline = "US"){    	
+	        	t.style.display = "table-row";
+	        	a.style.display = "none";
+	        	d.style.display = "none";
+	        	s.style.display = "none";
+	        	u.style.display = "none";
+	        	v.style.display = "none";
+	        }
+	        else if (compareairline = "Virgin America"){ 	
+	        	v.style.display = "table-row";
+	        	a.style.display = "none";
+	        	d.style.display = "none";
+	        	s.style.display = "none";
+	        	u.style.display = "none";
+	        	t.style.display = "none";
+	        }
+		}
+	</script>  
 	</body>
 </html>

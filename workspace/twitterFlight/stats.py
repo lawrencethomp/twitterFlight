@@ -11,15 +11,11 @@ import pandas as pd
 
 def groupairline(airline):
 	tweets = pd.read_csv("Tweets.csv")
-	list(tweets.columns.values)
-
-	sentiment_counts = tweets.airline_sentiment.value_counts()
-	number_of_tweets = tweets.tweet_id.count()
-	dff = tweets.groupby(["airline", "airline_sentiment" ]).count()["name"]
-	df_companySentiment = dff.to_frame().reset_index()
-	df_companySentiment.columns = ["airline", "airline_sentiment", "count"]
-	df2 = df_companySentiment
-	del df2['airline']
+	t_gb = tweets.groupby(["airline", "airline_sentiment" ]).count()["name"]
+	df_airlineSentiment = t_gb.to_frame().reset_index()
+	df_airlineSentiment.columns = ["airline", "airline_sentiment", "count"]
+	df = df_airlineSentiment
+	del df['airline']
 	if airline == 'US':
 		airline = 'US Airways'
-	return dff[airline,'positive'], dff[airline,'negative'], dff[airline,'neutral']
+	return t_gb[airline,'positive'], t_gb[airline,'negative'], t_gb[airline,'neutral']
