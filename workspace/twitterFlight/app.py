@@ -14,6 +14,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import SGDClassifier
+from stats import groupairline
 
 app = Flask(__name__)
 
@@ -75,10 +76,15 @@ def result():
     form = flightForm(request.form)
     if request.method == 'POST' and form.validate():
         review = request.form['sentimentTextarea']
+        airline = request.form['airline']
+        myname = request.form['nameText']
         review_this = train_classify()
         show = review_this.predict([review])
+        airlinedata = groupairline(airline)
         return render_template('analysis.html',
-                                content=show[0])
+                                content=show[0], myname=myname, airline=airline,
+                                positive = airlinedata[0],
+                                negative = airlinedata[1],neutral = airlinedata[2])
     return render_template('reviewform.html', form=form)
     
 if __name__ == "__main__":
