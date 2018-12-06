@@ -18,7 +18,7 @@ https://www.kaggle.com/crowdflower/twitter-airline-sentiment
 - data
 - static
 - templates
-.gitignore
+.gitignore  
 Tweets.csv  
 app.py  
 database.sqlite  
