@@ -19,10 +19,10 @@ https://www.kaggle.com/crowdflower/twitter-airline-sentiment
 - static
 - templates
 .gitignore
-Tweets.csv
-app.py
-database.sqlite
-flightPickle.pkl
-form.py
-requirements.txt
-stats.py
+Tweets.csv  
+app.py  
+database.sqlite  
+flightPickle.pkl  
+form.py  
+requirements.txt  
+stats.py  
