@@ -16,10 +16,14 @@ Taken from [here](https://mycourses.unh.edu/courses/48074/assignments/306480)
 - Must explain in detail how you evaluate the accuracy of model (10%)
 
 ## The Data:
-Our data was taken from a Kaggle Dataset for the [Twitter US Airline Sentiments](https://www.kaggle.com/crowdflower/twitter-airline-sentiment). The dataset is a csv file from February 2015. 
+Our data was taken from a Kaggle Dataset for the [Twitter US Airline Sentiments](https://www.kaggle.com/crowdflower/twitter-airline-sentiment). The dataset is a csv file from February 2015. Quoted from the original [project](https://www.figure-eight.com/data-for-everyone/):  
+
+    A sentiment analysis job about the problems of each major U.S. airline. Twitter data was scraped from February of 2015 and contributors were asked to first classify positive, negative, and neutral tweets, followed by categorizing negative reasons (such as "late flight" or "rude service").
+
+
 
 ## The Filestructure:
-- **data:** data for our backend  
+- **data:** data for our backend. In the MVC (Model-View-Controller) paradigm, this would be the models.  
 Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
 flightpickle.pkl: [Python object serial and de-serialization](https://pythontips.com/2013/08/02/what-is-pickle-in-python/), to convert into a byte stream for persistency.
 [twitter_classification_notebook.ipynb](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/data/twitter_classification_notebook.ipynb): The jupyter notebook for data exploration. Shows the use of SGD Classifier.  
