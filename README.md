@@ -16,7 +16,7 @@ Taken from [here](https://mycourses.unh.edu/courses/48074/assignments/306480)
 - Must explain in detail how you evaluate the accuracy of model (10%)
 
 ## The Data:
-Our data was taken from a Kaggle Dataset for the [Twitter US Airline Sentiments](https://www.kaggle.com/crowdflower/twitter-airline-sentiment). The dataset is a csv file from February 2015. Quoted from the original [project](https://www.figure-eight.com/data-for-everyone/):  
+Our data was taken from a Kaggle Dataset for the [Twitter US Airline Sentiments](https://www.kaggle.com/crowdflower/twitter-airline-sentiment). The dataset --very real-- is a csv file from February 2015. Quoted from the original [project](https://www.figure-eight.com/data-for-everyone/):  
 
     A sentiment analysis job about the problems of each major U.S. airline. 
     Twitter data was scraped from February of 2015 and contributors were asked to first classify 
