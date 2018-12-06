@@ -13,3 +13,16 @@ Taken from [here](https://mycourses.unh.edu/courses/48074/assignments/306480)
 
 
 https://www.kaggle.com/crowdflower/twitter-airline-sentiment
+
+## The Filestructure:
+- data
+- static
+- templates
+.gitignore
+Tweets.csv
+app.py
+database.sqlite
+flightPickle.pkl
+form.py
+requirements.txt
+stats.py
