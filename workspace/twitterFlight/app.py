@@ -14,6 +14,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import SGDClassifier
 from stats import groupairline
 import pickle
+from sklearn.model_selection import train_test_split
 
 app = Flask(__name__)
 
@@ -39,10 +40,11 @@ def train_classify():
 	data = pd.read_csv('Tweets.csv', encoding='utf-8')	
 	data['text'] = data['text'].apply(preprocessor)
 	stop = stopwords.words('english')
-	X_train = data.iloc[:4000, 0].values
-	y_train = data.iloc[:4000, 1].values
-	X_test = data.iloc[4000:8000, 0].values
-	y_test = data.iloc[4000:8000, 1].values
+	train,test = train_test_split(data,test_size=0.3,random_state=0)
+	X_train = train.iloc[:,0].values
+	y_train = train.iloc[:,1].values
+	X_test = test.iloc[:,0].values
+	y_test = test.iloc[:,1].values
 	tfidf = TfidfVectorizer(strip_accents=None,
                         lowercase=False,
                         preprocessor=None)
@@ -51,15 +53,15 @@ def train_classify():
                'vect__stop_words': [stop, None]},
               ]
               
-	lr_tfidf = Pipeline([('vect', tfidf),
+	sgd_tfidf = Pipeline([('vect', tfidf),
                     ('sgd', SGDClassifier(random_state=0))])
 
-	gs_lr_tfidf = GridSearchCV(lr_tfidf, param_grid,
+	gs_sgd_tfidf = GridSearchCV(sgd_tfidf, param_grid,
                            scoring='accuracy',
                            cv=5,
                            verbose=1)
-	gs_lr_tfidf.fit(X_train, y_train)
-	clf = gs_lr_tfidf.best_estimator_
+	gs_sgd_tfidf.fit(X_train, y_train)
+	clf = gs_sgd_tfidf.best_estimator_
 	mypickle_path = 'flightPickle.pkl'
 	flightpickle = open(mypickle_path, 'wb')
 	pickle.dump(clf, flightpickle)
