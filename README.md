@@ -28,6 +28,7 @@ logo.png: The logo to our project, shown on the webapp.
 formhelpers.html: Handles forms and error presentation.  
 analysis.html: shows the results of the analysis.  
 main.html: Allows the user to create a tweet and see if the process can be replicated.  
+- root: contains the main files for the application, and some stuff for git.  
 .gitignore: Specifies intentionally untracked files to ignore.  
 Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
 [app.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/app.py): The main file for the Flask application.   
