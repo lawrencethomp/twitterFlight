@@ -21,7 +21,7 @@ Our data was taken from a Kaggle Dataset for the Twitter US Airline https://www.
 - data  
 Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
 flightpickle.pkl: [Python object serial and de-serialization](https://pythontips.com/2013/08/02/what-is-pickle-in-python/), to convert into a byte stream for persistency.
-twitter_classification_notebook.ipynb: 
+[twitter_classification_notebook.ipynb](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/data/twitter_classification_notebook.ipynb): The jupyter notebook for data exploration. Shows the use of SGD Classifier.  
 - static  
 logo.png: The logo to our project, shown on the webapp.
 - templates    
