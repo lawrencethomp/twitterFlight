@@ -44,11 +44,11 @@ Our data was taken from a Kaggle Dataset for the [Twitter US Airline Sentiments]
   - main.html: Allows the user to create a tweet and see if the process can be replicated.  
 
 - **root:** contains the main files for the application, and some stuff for git.  
-> .gitignore: Specifies intentionally untracked files to ignore.  
-> Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
-> [app.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/app.py): The main file for the Flask application.   
-> database.sqlite: sqlite database for user-created tweets.   
-> flightPickle.pkl: pickled data for persistence.  
-> [form.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/form.py): Login for Flask.  
-> [requirements.txt](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/requirements.txt): [Easy install](https://stackoverflow.com/questions/7225900/how-to-install-packages-using-pip-according-to-the-requirements-txt-file-from-a) for pip files, use _pip install -r /path/to/requirements.txt_.  
-> [stats.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/stats.py): returns consensus on the airline according to positive, negative, or neutral sentiments.   
+  - .gitignore: Specifies intentionally untracked files to ignore.  
+  - Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
+  - [app.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/app.py): The main file for the Flask application.   
+  - database.sqlite: sqlite database for user-created tweets.   
+  - flightPickle.pkl: pickled data for persistence.  
+  - [form.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/form.py): Login for Flask.  
+  - [requirements.txt](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/requirements.txt): [Easy install](https://stackoverflow.com/questions/7225900/how-to-install-packages-using-pip-according-to-the-requirements-txt-file-from-a) for pip files, use _pip install -r /path/to/requirements.txt_.  
+  - [stats.py](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/stats.py): returns consensus on the airline according to positive, negative, or neutral sentiments.   
