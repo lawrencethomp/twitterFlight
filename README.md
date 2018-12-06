@@ -17,7 +17,7 @@ https://www.kaggle.com/crowdflower/twitter-airline-sentiment
 ## The Filestructure:
 - data
 - static
-- templates
+- templates  
 .gitignore  
 Tweets.csv  
 app.py  
