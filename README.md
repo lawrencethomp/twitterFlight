@@ -3,7 +3,7 @@
 A classification project by Oreva and Lawrence
 
 ## Why we're doing this project
-People like to complain about things on Twitter. A lot. Next to trying to launch careers as comedians or pundits, there are somewhere around a million people and companies to complain to. With all these complaints and [often from the best of them](https://www.thewrap.com/john-podhoretz-declares-victory-in-war-with-nyc-restaurant-chain/), it poses the question: can we take a bunch of comments from Twitter's best, most vocal, and brightest, and make predictions on whether they what they were saying?
+People like to complain about things on Twitter. A lot. Next to trying to launch careers as comedians or pundits, there are somewhere around a million people and companies to complain to. With all these complaints and [often from the best of them](https://www.thewrap.com/john-podhoretz-declares-victory-in-war-with-nyc-restaurant-chain/), it poses the question: can we take a bunch of comments from Twitter's wildest, most vocal, and brightest, and make predictions on what they were saying?
 
 ## The Assignment:
 Taken from [here](https://mycourses.unh.edu/courses/48074/assignments/306480)
