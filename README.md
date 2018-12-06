@@ -27,8 +27,8 @@ Our data was taken from a Kaggle Dataset for the [Twitter US Airline Sentiments]
 
 ## The Filestructure:
 - **data:** data for our backend. In the MVC (Model-View-Controller) paradigm, this would be the models.  
-  -Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
-  -flightpickle.pkl: [Python object serial and de-serialization](https://pythontips.com/2013/08/02/what-is-pickle-in-python/), to convert into a byte stream for persistency.
+  - Tweets.csv: The data from [kaggle](https://www.kaggle.com/crowdflower/twitter-airline-sentiment)  
+  - flightpickle.pkl: [Python object serial and de-serialization](https://pythontips.com/2013/08/02/what-is-pickle-in-python/), to convert into a byte stream for persistency.
   -[twitter_classification_notebook.ipynb](https://github.com/lawrencethomp/twitterFlight/blob/master/workspace/twitterFlight/data/twitter_classification_notebook.ipynb): The jupyter notebook for data exploration. Shows the use of SGD Classifier. Contains the graphs used for data exploration.  
 
 - **static**  
