@@ -1,4 +1,5 @@
 # TwitterFlight
+A classification project by Oreva and Lawrence
 
 ## The Assignment:
 Taken from [here](https://mycourses.unh.edu/courses/48074/assignments/306480)
