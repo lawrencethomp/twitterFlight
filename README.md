@@ -21,7 +21,7 @@ Our data was taken from a Kaggle Dataset for the Twitter US Airline https://www.
 - data  
 
 - static  
-logo.png  
+logo.png 
 - templates    
 .gitignore  
 Tweets.csv  
