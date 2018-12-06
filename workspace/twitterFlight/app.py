@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField,Form, TextAreaField, validators, SelectField, TextField, IntegerField, RadioField
-from wtforms.validators import DataRequired
+from wtforms import Form, SubmitField
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
@@ -10,7 +9,6 @@ from nltk.stem.porter import PorterStemmer
 import nltk
 from nltk.corpus import stopwords
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import GridSearchCV
 from sklearn.linear_model import SGDClassifier
@@ -41,10 +39,10 @@ def train_classify():
 	data = pd.read_csv('Tweets.csv', encoding='utf-8')	
 	data['text'] = data['text'].apply(preprocessor)
 	stop = stopwords.words('english')
-	X_train = data.iloc[:2000, 0].values
-	y_train = data.iloc[:2000, 1].values
-	X_test = data.iloc[2000:4000, 0].values
-	y_test = data.iloc[2000:4000, 1].values
+	X_train = data.iloc[:4000, 0].values
+	y_train = data.iloc[:4000, 1].values
+	X_test = data.iloc[4000:8000, 0].values
+	y_test = data.iloc[4000:8000, 1].values
 	tfidf = TfidfVectorizer(strip_accents=None,
                         lowercase=False,
                         preprocessor=None)
@@ -114,7 +112,7 @@ def result():
                                 usnegative=usdata[1],usneutral=usdata[2],
                                	vapositive=vadata[0],
                                 vanegative=vadata[1],vaneutral=vadata[2])
-    return render_template('reviewform.html', form=form)
+    return render_template('main.html', form=form)
     
 if __name__ == "__main__":
     app.run(debug=True)
